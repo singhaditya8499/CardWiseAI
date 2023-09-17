@@ -1,1 +1,1 @@
-# SmartCreditCardRecommender
+# CardWise AI
