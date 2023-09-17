@@ -72,7 +72,11 @@ Question: {user_input} Which card should I go for?"""
             model=GPT_MODEL,
             temperature=0,
         )["choices"][0]["message"]["content"]
-        # Display the response
+
+        # TODO: Display picture of recommended credit card
+        # See https://docs.streamlit.io/library/api-reference/media/st.image for api
+
+        # Display recommended credit card
         st.write(response)
     else:
         # Display a warning if the user input is empty
