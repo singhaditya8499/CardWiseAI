@@ -14,7 +14,7 @@ GPT_MODEL = "gpt-3.5-turbo"
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 # Load prompt
-credit_card_data = pd.read_csv("./../data/credit_card_data_complete.csv")
+credit_card_data = pd.read_csv("../data/credit_card_data.csv")
 prompt_context = "These are the details about the available credit cards: \n"
 
 # Collate all the details about the credit cards
@@ -78,16 +78,30 @@ Question: {user_input} Which card should I go for?"""
         # TODO: Display picture of recommended credit card
         # See https://docs.streamlit.io/library/api-reference/media/st.image for api
 
-        cards = ['capital one quicksilver', 'amex blue cash preferred', 'amex gold', 
-                 'apple card', 'us bank platinum visa', 'wells fargo propel amex', 
-                 'chase freedom flex', 'chase sapphire preferred', 'discover it cash back', 
-                 'wells fargo platinum visa', 'discover it miles', 'chase freedom unlimited', 
-                 'discover it secured credit card', 'us bank altitude go visa signature', 
-                 'wells fargo cash wise visa', 'us bank cash plus visa signature', 
-                 'amex platinum', 'capital one venture rewards', 'capital one platinum']
-        
+        cards = [
+            "capital one quicksilver",
+            "amex blue cash preferred",
+            "amex gold",
+            "apple card",
+            "us bank platinum visa",
+            "wells fargo propel amex",
+            "chase freedom flex",
+            "chase sapphire preferred",
+            "discover it cash back",
+            "wells fargo platinum visa",
+            "discover it miles",
+            "chase freedom unlimited",
+            "discover it secured credit card",
+            "us bank altitude go visa signature",
+            "wells fargo cash wise visa",
+            "us bank cash plus visa signature",
+            "amex platinum",
+            "capital one venture rewards",
+            "capital one platinum",
+        ]
+
         found = 0
-        index_of_card  = -1
+        index_of_card = -1
         images = []
         images_Names = []
 
@@ -98,7 +112,7 @@ Question: {user_input} Which card should I go for?"""
                 found = 1
                 index_of_card = i
                 images.append(i)
-        
+
         if found:
             for i in range(len(images)):
                 imageLink = cards[images[i]]
@@ -109,8 +123,15 @@ Question: {user_input} Which card should I go for?"""
                 new_size = (300, 200)
                 resized_image = image.resize(new_size)
                 images_Names.append(resized_image)
-            st.image(images_Names, caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
-
+            st.image(
+                images_Names,
+                caption=None,
+                width=None,
+                use_column_width=None,
+                clamp=False,
+                channels="RGB",
+                output_format="auto",
+            )
 
         # Display recommended credit card
         st.write(response)
