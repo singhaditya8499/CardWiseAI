@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Processing Web App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>CardWise AI</h1>
+    <h4>Empower your financial choices with AI! CardWise is a next generation platform that helps you find the perfect credit card effortlessly. Smart. Simple. Secure.</h4>
+    <form method="POST" action="/">
+        <input type="text" name="user_input" placeholder="Enter text">
+        <input type="submit" value="Enter">
+        <input type="reset" value="Reset">
+    </form>
+    <h2>Processed Text:</h2>
+    <p>{{ output_text }}</p>
+</body>
+</html>
