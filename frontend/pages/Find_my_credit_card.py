@@ -14,7 +14,7 @@ GPT_MODEL = "gpt-3.5-turbo"
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 # Load prompt
-credit_card_data = pd.read_csv("../data/credit_card_data_complete.csv")
+credit_card_data = pd.read_csv("./../../data/credit_card_data_complete.csv")
 prompt_context = "These are the details about the available credit cards: \n"
 
 # Collate all the details about the credit cards
