@@ -19,11 +19,12 @@ jsonschema-specifications==2023.7.1
 markdown-it-py==3.0.0
 MarkupSafe==2.1.3
 mdurl==0.1.2
+numpy==1.26.0
 multidict==6.0.4
 numpy==1.26.0
 openai==0.28.0
 packaging==23.1
-pandas==2.1.0
+# pandas==2.1.0
 Pillow==9.5.0
 protobuf==4.24.3
 pyarrow==13.0.0

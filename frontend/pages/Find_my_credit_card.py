@@ -2,6 +2,7 @@ import streamlit as st
 import openai
 import pandas as pd
 import os
+from PIL import Image
 
 # Page title
 st.title("Find my credit card")
@@ -72,7 +73,46 @@ Question: {user_input} Which card should I go for?"""
             model=GPT_MODEL,
             temperature=0,
         )["choices"][0]["message"]["content"]
-        # Display the response
+        # response = "Hello"
+
+        # TODO: Display picture of recommended credit card
+        # See https://docs.streamlit.io/library/api-reference/media/st.image for api
+
+        cards = ['capital one quicksilver', 'amex blue cash preferred', 'amex gold', 
+                 'apple card', 'us bank platinum visa', 'wells fargo propel amex', 
+                 'chase freedom flex', 'chase sapphire preferred', 'discover it cash back', 
+                 'wells fargo platinum visa', 'discover it miles', 'chase freedom unlimited', 
+                 'discover it secured credit card', 'us bank altitude go visa signature', 
+                 'wells fargo cash wise visa', 'us bank cash plus visa signature', 
+                 'amex platinum', 'capital one venture rewards', 'capital one platinum']
+        
+        found = 0
+        index_of_card  = -1
+        images = []
+        images_Names = []
+
+        lowercase_response = response.lower()
+
+        for i in range(len(cards)):
+            if cards[i] in lowercase_response:
+                found = 1
+                index_of_card = i
+                images.append(i)
+        
+        if found:
+            for i in range(len(images)):
+                imageLink = cards[images[i]]
+                imageLink = imageLink.replace(" ", "-")
+                imageLink = imageLink + ".jpg"
+                imageLink = "./cards/" + imageLink
+                image = Image.open(imageLink)
+                new_size = (300, 200)
+                resized_image = image.resize(new_size)
+                images_Names.append(resized_image)
+            st.image(images_Names, caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
+
+
+        # Display recommended credit card
         st.write(response)
     else:
         # Display a warning if the user input is empty
