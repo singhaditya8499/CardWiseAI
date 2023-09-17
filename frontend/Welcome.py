@@ -8,5 +8,8 @@ st.title("CardWise AI")
 st.caption(
     "Empower your financial choices with AI! CardWise is a next generation platform that helps you find the perfect credit card effortlessly"
 )
+
 # Streamlit app tagline
 st.subheader("Smart. Simple. Secure.")
+
+st.text("** Need OpenAI API key for proper functioning **")
